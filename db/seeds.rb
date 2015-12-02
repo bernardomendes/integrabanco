@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+[
+  { nome: "Depósito", metodo: "deposito"},
+  { nome: "Transferência", metodo: "transferencia"},
+  { nome: "Saque", metodo: "saque"}
+].each do |tipo_operacao|
+  TipoOperacao.create(tipo_operacao)
+end

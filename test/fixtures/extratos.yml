@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipo_operacao_id: 1
+  conta_id: 1
+  valor: 1
+  descricao: MyString
+
+two:
+  tipo_operacao_id: 1
+  conta_id: 1
+  valor: 1
+  descricao: MyString

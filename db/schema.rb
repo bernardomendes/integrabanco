@@ -11,10 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202172141) do
+ActiveRecord::Schema.define(version: 20151202181514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conta", force: :cascade do |t|
+    t.integer  "numero"
+    t.float    "saldo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contas", force: :cascade do |t|
+    t.float    "saldo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "extratos", force: :cascade do |t|
+    t.integer  "tipo_operacao_id"
+    t.integer  "conta_id"
+    t.float    "valor"
+    t.string   "descricao"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "tipo_operacoes", force: :cascade do |t|
+    t.string   "nome"
+    t.string   "metodo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -29,6 +58,7 @@ ActiveRecord::Schema.define(version: 20151202172141) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "conta_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
