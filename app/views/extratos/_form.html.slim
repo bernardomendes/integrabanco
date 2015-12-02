@@ -1,0 +1,22 @@
+= form_for @extrato do |f|
+  - if @extrato.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@extrato.errors.count, "erro")}:"
+      ul
+        - @extrato.errors.full_messages.each do |message|
+          li = message
+
+  = f.hidden_field :tipo_operacao_id, value: @extrato.tipo_operacao_id
+
+  - if @extrato.tipo_operacao.metodo == "transferencia"
+    .field
+      = f.label :nova_conta
+      br
+      = f.number_field :nova_conta_id
+  .field
+    = f.label :valor
+    br
+    = f.number_field :valor
+
+
+  .actions = f.submit value: "Enviar"

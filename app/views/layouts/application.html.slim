@@ -2,13 +2,29 @@ doctype html
 html
   head
     title
-      | Integrabanco
+      | Banco Integra S.A.
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
     #container
-      header
-        h1 Banco Integra SA.
-        
+      header style="margin-bottom: 50px;"
+        h1 Banco Integra S.A. 
+        = link_to "Home", root_path
+        - if current_user
+          h2 Informações da conta
+          ul
+            li Número da conta: #{current_user.conta_id}
+            li Saldo #{current_user.conta_saldo}
+            li = link_to("Opções de usuário", edit_user_registration_path)
+            li = link_to("Finalizar sessão", destroy_user_session_path, :method => :delete)
+          h2 Operações
+          ul
+            - @operacoes.each do |o|
+              li = link_to(o.nome, new_extrato_path(tipo_operacao_id: o.id))
+            li = link_to("Extrato", extratos_path)
+            
+      - flash.each do |f|
+        p id="flash_#{f[0]}" = f[1]
+
       = yield

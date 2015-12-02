@@ -7,9 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 [
-  { nome: "Depósito", metodo: "deposito"},
-  { nome: "Transferência", metodo: "transferencia"},
-  { nome: "Saque", metodo: "saque"}
+  { nome: "Depósito", metodo: "deposito", prefixo: "+"},
+  { nome: "Transferência", metodo: "transferencia", prefixo: "-"},
+  { nome: "Transferência Recebida", metodo: "recebe_transferencia", prefixo: "+"},
+  { nome: "Saque", metodo: "saque", prefixo: "-"}
 ].each do |tipo_operacao|
   TipoOperacao.create(tipo_operacao)
 end

@@ -1,0 +1,37 @@
+h3 Extrato
+
+h4 Filtro de data
+= form_for @filtro, url: extratos_path, method: :get do |f|
+  - if @filtro.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@filtro.errors.count, "erro")}:"
+      ul
+        - @filtro.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :data_inicio
+    br
+    = f.text_field :data_inicio
+  .field
+    = f.label :data_fim
+    br
+    = f.text_field :data_fim
+
+  .actions = f.submit :enviar
+
+table style="margin-top: 50px;"
+  thead
+    tr
+      th Data
+      th Operação
+      th Descrição
+      th Valor
+
+  tbody
+    - @extratos.each do |extrato|
+      tr
+        td = l extrato.created_at
+        td = extrato.tipo_operacao_nome
+        td = extrato.descricao
+        td = extrato.valor_index

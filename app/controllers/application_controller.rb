@@ -4,7 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!
+  before_action :set_actions
 
   def index
+    
+  end
+
+  def set_actions
+    @operacoes = TipoOperacao.where("metodo != 'recebe_transferencia'")
   end
 end
