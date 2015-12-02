@@ -1,5 +1,16 @@
 source 'https://rubygems.org'
 
+# controle de usuários
+gem 'devise'
+
+# slim ao invés de erb
+gem 'slim-rails'
+gem 'html2slim'
+
+# mais rápido que webrick
+gem 'thin' 
+
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
