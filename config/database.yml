@@ -82,4 +82,4 @@ production:
   <<: *default
   database: integrabanco_production
   username: integrabanco
-  password: <%= ENV['INTEGRABANCO_DATABASE_PASSWORD'] %>
+  password: whatever
