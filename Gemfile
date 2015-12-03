@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.2'
 
 # controle de usuários
 gem 'devise'
@@ -58,3 +59,6 @@ group :test do
   gem "rspec-rails"
   gem "capybara"
 end
+
+# heroku 
+gem "rails_12factor"
