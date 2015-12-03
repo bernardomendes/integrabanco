@@ -9,7 +9,7 @@ class Extrato < ActiveRecord::Base
 
   delegate :nome, :prefixo, :metodo, to: :tipo_operacao, prefix: true
 
-  attr_accessor :conta_transferencia_id
+  attr_accessor :conta_transferencia_id, :transferencia_recebida
   # toda operação possui extrato, portanto as operações serão incluídas neste model
 
   # valida valores negativos
@@ -33,10 +33,7 @@ class Extrato < ActiveRecord::Base
 
   # depósito
   def deposito
-    puts self.conta.saldo
-    puts valor
     self.conta.saldo += valor
-    puts self.conta.saldo
   end
 
   # saque
@@ -54,11 +51,9 @@ class Extrato < ActiveRecord::Base
     else
       taxa = 7
     end
-
-    self.valor += taxa
     
     # remove da conta atual
-    self.conta.saldo -= valor
+    self.conta.saldo -= valor+taxa
     self.descricao = "Transferência para a conta #{nova_conta.try(:id)} taxa de #{taxa}"
 
     # nova conta recebe transferência
@@ -71,8 +66,12 @@ class Extrato < ActiveRecord::Base
 
   # receber transferência
   def recebe_transferencia
-    self.conta.saldo += valor
+    
+    if !transferencia_recebida
+    self.conta.saldo += self.valor
     self.descricao = "Transferência da conta #{self.conta_transferencia_id}"
+    self.transferencia_recebida = true
+    end
   end
 
 end

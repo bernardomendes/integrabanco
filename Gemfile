@@ -59,6 +59,3 @@ group :test do
   gem "rspec-rails"
   gem "capybara"
 end
-
-# heroku 
-gem "rails_12factor"

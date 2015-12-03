@@ -22,7 +22,7 @@ class ExtratosController < ApplicationController
 
   def create
     @extrato = Extrato.new(extrato_params.merge(conta_id: current_user.conta_id))
-
+    
     respond_to do |format|
       if @extrato.save
         format.html { redirect_to new_extrato_path(tipo_operacao_id: @extrato.tipo_operacao_id) , notice: "#{@extrato.tipo_operacao_nome} efetuado(a)" }
