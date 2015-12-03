@@ -28,4 +28,4 @@ h2
 h3
   | Cancelar conta
 p
-  = button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete
+  = button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete, id: "cancelar_conta"

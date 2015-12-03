@@ -33,7 +33,10 @@ class Extrato < ActiveRecord::Base
 
   # depósito
   def deposito
+    puts self.conta.saldo
+    puts valor
     self.conta.saldo += valor
+    puts self.conta.saldo
   end
 
   # saque

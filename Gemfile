@@ -10,9 +10,6 @@ gem 'html2slim'
 # mais rápido que webrick
 gem 'thin' 
 
-# permissões
-gem 'cancancan'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
@@ -57,3 +54,7 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem "rspec-rails"
+  gem "capybara"
+end

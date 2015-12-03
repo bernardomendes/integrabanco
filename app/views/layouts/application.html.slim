@@ -16,7 +16,7 @@ html
           ul
             li Número da conta: #{current_user.conta_id}
             li Saldo #{current_user.conta_saldo}
-            li = link_to("Opções de usuário", edit_user_registration_path)
+            li#opcoes_usuario = link_to("Opções de usuário", edit_user_registration_path)
             li = link_to("Finalizar sessão", destroy_user_session_path, :method => :delete)
           h2 Operações
           ul

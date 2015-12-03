@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  belongs_to :conta
+  belongs_to :conta, autosave: true
 
   before_create :criar_conta
 
@@ -31,5 +31,6 @@ class User < ActiveRecord::Base
   private
     def criar_conta
       self.build_conta({ saldo: 0 })
+      build_conta({ saldo: 0 })
     end
 end
